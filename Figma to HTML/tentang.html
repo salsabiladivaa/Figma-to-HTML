@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang - Mahira Printing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-yellow: #F9D448;
+      --primary-yellow-hover: #f3c92b;
+      --soft-yellow-badge: #FFF3BF;
+      --soft-yellow-tint: #FFF9DB;
+      --dark-bg: #111111;
+      --card-dark: #141414;
+      --text-dark: #18181B;
+      --text-body: #4B5563;
+      --text-muted: #6B7280;
+      --border-light: #E5E7EB;
+      --bg-page: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Logo */
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .brand-logo img,
+    .brand-logo svg {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #F3F4F6;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: #4B5563;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .about-hero-section {
+      padding: 44px 0 68px;
+    }
+
+    .about-hero-banner {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+      padding: 40px 44px;
+      border-radius: 26px;
+      background: linear-gradient(120deg, #FFFDF2 0%, #FFF8D6 48%, #FFF3B8 100%);
+      border: 1px solid #FDE68A;
+    }
+
+    .about-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--soft-yellow-badge);
+      color: #713F12;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .about-hero-title {
+      font-size: 46px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+    }
+
+    .about-hero-desc {
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.7;
+      max-width: 470px;
+      margin-bottom: 24px;
+    }
+
+    .btn-about-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1.5px solid #18181B;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-about-wa:hover {
+      background-color: var(--primary-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Workshop Card Kanan */
+    .workshop-showcase {
+      position: relative;
+      padding-bottom: 24px;
+    }
+
+    .workshop-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+      background-color: #1F2937;
+      aspect-ratio: 4 / 3.6;
+    }
+
+    .workshop-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .workshop-top-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: rgba(17, 17, 17, 0.78);
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    .workshop-bottom-pill {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      background-color: rgba(17, 17, 17, 0.85);
+      color: #FDE047;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 2;
+    }
+
+    .floating-bahan-card {
+      position: relative;
+      margin-top: -28px;
+      margin-left: -18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      z-index: 3;
+    }
+
+    .floating-bahan-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background-color: var(--soft-yellow-badge);
+      color: #B45309;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .floating-bahan-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.25;
+    }
+
+    .floating-bahan-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* Profil Usaha & Nilai Inti */
+    .profile-values-section {
+      padding: 44px 0 76px;
+    }
+
+    .profile-values-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    .profile-eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      color: #D97706;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .profile-heading {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.18;
+      margin-bottom: 20px;
+    }
+
+    .profile-copy p {
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .profile-copy p strong {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .values-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 8px;
+    }
+
+    .value-card {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--border-light);
+      border-radius: 16px;
+      padding: 20px 22px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .value-card:hover {
+      border-color: var(--primary-yellow);
+      transform: translateY(-2px);
+    }
+
+    .value-card.featured-dark {
+      background-color: var(--card-dark);
+      border-color: #18181B;
+      color: #FFFFFF;
+    }
+
+    .value-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .value-num-badge {
+      background-color: var(--soft-yellow-badge);
+      color: #713F12;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 4px 9px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .value-card.featured-dark .value-num-badge {
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+    }
+
+    .value-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .value-card.featured-dark .value-title {
+      color: #FFFFFF;
+    }
+
+    .value-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .value-card.featured-dark .value-desc {
+      color: #D1D5DB;
+    }
+
+    /* CTA Hubungi Kami */
+    .about-cta-section {
+      padding: 12px 0 88px;
+    }
+
+    .about-cta-box {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 46px 36px;
+      border: 1.5px solid var(--border-light);
+      border-radius: 22px;
+      background-color: #FAFAFA;
+    }
+
+    .about-cta-box::after {
+      content: "";
+      position: absolute;
+      right: -36px;
+      bottom: -36px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background-color: var(--soft-yellow-tint);
+      pointer-events: none;
+    }
+
+    .about-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .about-cta-eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      color: #D97706;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .about-cta-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .about-cta-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .btn-chat-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1.5px solid #18181B;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-chat-wa:hover {
+      background-color: var(--primary-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark-bg);
+      color: #D1D5DB;
+      padding: 72px 0 64px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 1.2fr;
+      gap: 48px;
+    }
+
+    .footer-logo-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: 6px;
+      margin-bottom: 22px;
+    }
+
+    .footer-logo-box img,
+    .footer-logo-box svg {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 12.5px;
+      line-height: 1.75;
+      color: #9CA3AF;
+      max-width: 340px;
+      margin-bottom: 24px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-links a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #262626;
+      color: #D1D5DB;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+    }
+
+    .footer-heading {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .footer-nav ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-nav ul li a {
+      font-size: 13px;
+      color: #9CA3AF;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav ul li a:hover {
+      color: var(--primary-yellow);
+    }
+
+    .footer-contact ul li {
+      margin-bottom: 16px;
+    }
+
+    .footer-contact ul li a {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: #9CA3AF;
+      line-height: 1.6;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact ul li a:hover {
+      color: var(--primary-yellow);
+    }
+
+    .footer-contact ul li a i {
+      color: var(--primary-yellow);
+      font-size: 14px;
+      margin-top: 4px;
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-hero-banner,
+      .profile-values-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-hero-banner {
+        padding: 32px 24px;
+      }
+
+      .about-hero-title {
+        font-size: 34px;
+      }
+
+      .floating-bahan-card {
+        margin-left: 8px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Mahira Printing">
+        <img src="assets/logo-mahira.png" alt="Mahira Printing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <svg style="display:none;" viewBox="0 0 280 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 52C12 28.804 30.804 10 54 10C77.196 10 96 28.804 96 52C96 67.4 87.7 80.8 75.3 88" stroke="#F8D231" stroke-width="6" stroke-linecap="round"/>
+          <path d="M24 58L32 24H58L52 50H42L46 32H39L32 58H24Z" fill="#F8D231"/>
+          <path d="M47 24H68C76 24 80 29 78 37C76 45 70 49 61 49H53L47 78H38L47 24ZM56 41H62C66 41 69 39 70 36C71 33 69 31 65 31H58L56 41Z" fill="#F8D231"/>
+          <text x="108" y="54" fill="#F8D231" font-family="Impact, 'Arial Narrow', sans-serif" font-weight="900" font-size="44" letter-spacing="2">MAHIRA</text>
+          <text x="110" y="75" fill="#F8D231" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="700" font-size="14.5" letter-spacing="9.5">PRINTING</text>
+        </svg>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="produk.html">Produk</a>
+        <a href="jasa.html">Jasa</a>
+        <a href="portofolio.html">Portofolio</a>
+        <a href="tentang.html" class="active">Tentang</a>
+        <a href="review.html">Review</a>
+      </nav>
+
+      <a href="https://wa.me/6288291614900" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Pesan Sekarang <span>&rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Tentang -->
+    <section class="about-hero-section">
+      <div class="container">
+        <div class="about-hero-banner">
+          <div>
+            <span class="about-pill">
+              <i class="fa-solid fa-print"></i> TENTANG MAHIRA PRINTING
+            </span>
+
+            <h1 class="about-hero-title">Lebih dari Sekedar Percetakan.</h1>
+
+            <p class="about-hero-desc">
+              Mitra cetak terpercaya untuk mentransformasikan gagasan, brand, dan kampanye bisnis Anda menjadi produk cetak bernilai tinggi dengan sentuhan presisi teknis, kalibrasi warna akurat, dan dedikasi penuh.
+            </p>
+
+            <a href="https://wa.me/6288291614900?text=Halo%20Mahira%20Printing%2C%20saya%20ingin%20konsultasi%20kebutuhan%20cetak." target="_blank" rel="noopener noreferrer" class="btn-about-wa">
+              <i class="fa-brands fa-whatsapp"></i> Konsultasi via WhatsApp
+            </a>
+          </div>
+
+          <div class="workshop-showcase">
+            <div class="workshop-frame">
+              <span class="workshop-top-badge">WORKSHOP CIBINONG</span>
+              <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=900&q=85" alt="Mahira Printing Workshop Percetakan & Proofing">
+              <span class="workshop-bottom-pill">
+                <i class="fa-solid fa-clock"></i> Ready 24–48 Jam
+              </span>
+            </div>
+
+            <div class="floating-bahan-card">
+              <div class="floating-bahan-icon">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <div>
+                <div class="floating-bahan-title">100+ Pilihan Bahan</div>
+                <div class="floating-bahan-sub">Kertas, Kain, Akrilik</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profil Usaha & Nilai Inti -->
+    <section class="profile-values-section">
+      <div class="container">
+        <div class="profile-values-grid">
+          <div class="profile-copy">
+            <span class="profile-eyebrow">PROFIL USAHA &amp; NILAI INTI</span>
+            <h2 class="profile-heading">Solusi Cetak Lengkap Untuk Berbagai Skala Kebutuhan.</h2>
+
+            <p>
+              <strong>Mahira Printing</strong> merupakan usaha yang bergerak di bidang percetakan dan digital printing dengan menyediakan berbagai kebutuhan cetak, desain, custom, dan produk promosi.
+            </p>
+
+            <p>
+              Kami melayani kebutuhan untuk brand, acara, promosi, organisasi, maupun kebutuhan personal. Berbagai produk dapat disesuaikan dengan kebutuhan pelanggan, mulai dari produk berbahan kertas, textile, signage, hingga souvenir dan custom.
+            </p>
+
+            <p>
+              Mahira Printing berkomitmen untuk memberikan pelayanan yang mudah dan membantu pelanggan menentukan solusi yang sesuai dengan kebutuhan cetaknya.
+            </p>
+          </div>
+
+          <div class="values-stack">
+            <article class="value-card">
+              <div class="value-card-head">
+                <span class="value-num-badge">01</span>
+                <h3 class="value-title">Kualitas Presisi &amp; Standar Unggul</h3>
+              </div>
+              <p class="value-desc">
+                Mengutamakan hasil cetak rapi, akurasi potong millimeter die-cut, warna tajam, kalibrasi Pantone, dan penggunaan tinta original anti luntur.
+              </p>
+            </article>
+
+            <article class="value-card featured-dark">
+              <div class="value-card-head">
+                <span class="value-num-badge">02</span>
+                <h3 class="value-title">Solusi Bahan Fleksibel &amp; Efisien</h3>
+              </div>
+              <p class="value-desc">
+                Membantu pelanggan menemukan gramatur kertas terbaik (Art Paper, Ivory, Kraft, Fancy Paper) serta opsi finishing laminate (Doff/Glossy/Spot UV) yang pas dengan alokasi budget Anda.
+              </p>
+            </article>
+
+            <article class="value-card">
+              <div class="value-card-head">
+                <span class="value-num-badge">03</span>
+                <h3 class="value-title">Pelayanan Ramah &amp; Konsultasi Desain</h3>
+              </div>
+              <p class="value-desc">
+                Didampingi tim pra-cetak handal: pengecekan resolusi file artwork, format CMYK, bleed, hingga verifikasi digital mock-up gratis sebelum file dieksekusi ke mesin cetak.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Hubungi Kami -->
+    <section class="about-cta-section">
+      <div class="container">
+        <div class="about-cta-box">
+          <div class="about-cta-inner">
+            <span class="about-cta-eyebrow">HUBUNGI KAMI</span>
+            <h2 class="about-cta-title">Ada kebutuhan cetak?</h2>
+            <p class="about-cta-desc">
+              Konsultasikan kebutuhan cetak, desain, atau custom kamu bersama Mahira Printing.
+            </p>
+            <a href="https://wa.me/6288291614900?text=Halo%20Mahira%20Printing%2C%20saya%20ingin%20konsultasi%20kebutuhan%20cetak%2C%20desain%2C%20atau%20custom." target="_blank" rel="noopener noreferrer" class="btn-chat-wa">
+              <i class="fa-brands fa-whatsapp"></i> Chat via WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="kontak">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-box">
+            <img src="assets/logo-mahira.png" alt="Mahira Printing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <svg style="display:none;" viewBox="0 0 280 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 52C12 28.804 30.804 10 54 10C77.196 10 96 28.804 96 52C96 67.4 87.7 80.8 75.3 88" stroke="#F8D231" stroke-width="6" stroke-linecap="round"/>
+              <path d="M24 58L32 24H58L52 50H42L46 32H39L32 58H24Z" fill="#F8D231"/>
+              <path d="M47 24H68C76 24 80 29 78 37C76 45 70 49 61 49H53L47 78H38L47 24ZM56 41H62C66 41 69 39 70 36C71 33 69 31 65 31H58L56 41Z" fill="#F8D231"/>
+              <text x="108" y="54" fill="#F8D231" font-family="Impact, 'Arial Narrow', sans-serif" font-weight="900" font-size="44" letter-spacing="2">MAHIRA</text>
+              <text x="110" y="75" fill="#F8D231" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="700" font-size="14.5" letter-spacing="9.5">PRINTING</text>
+            </svg>
+          </div>
+          <p class="footer-desc">
+            Mahira Printing berkomitmen memberikan hasil cetak berkualitas. Kami membantu pelaku usaha, desainer, dan penjual melalui layanan cetak offset, digital, serta pembuatan kemasan sesuai kebutuhan.
+          </p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/mahiraprinting?evlk=MTg0cDFydjhjN3llbg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/6288291614900" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h3 class="footer-heading">NAVIGASI</h3>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="jasa.html">Jasa</a></li>
+            <li><a href="portofolio.html">Portofolio</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="review.html">Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3 class="footer-heading">CONTACT &amp; SUPPORT</h3>
+          <ul>
+            <li>
+              <a href="mailto:mahiraprintingg@gmail.com">
+                <i class="fa-regular fa-envelope"></i>
+                <span>mahiraprintingg@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://maps.app.goo.gl/4R66wS7qV4GQJ7K36" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Ciriung, Kec. Cibinong, Kabupaten Bogor,<br>Jawa Barat 16918</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/6288291614900" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Whatsapp: +62 882-9161-4900</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

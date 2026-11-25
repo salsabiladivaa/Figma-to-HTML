@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Portofolio - Mahira Printing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-yellow: #F9D448;
+      --primary-yellow-hover: #f3c92b;
+      --dark-bg: #111111;
+      --btn-dark: #2B2D30;
+      --btn-dark-hover: #18181B;
+      --text-dark: #111111;
+      --text-body: #4B5563;
+      --bg-page: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Logo */
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .brand-logo img,
+    .brand-logo svg {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #F3F4F6;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: #4B5563;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-yellow-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Detail Section */
+    .detail-section {
+      padding: 64px 0 96px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: stretch;
+    }
+
+    .gallery-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .main-image-box {
+      width: 100%;
+      aspect-ratio: 4 / 3.35;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #F3F4F6;
+    }
+
+    .main-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumbnail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .thumb-item {
+      padding: 0;
+      width: 100%;
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2.5px solid transparent;
+      background-color: #F3F4F6;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .thumb-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .thumb-item.active {
+      border-color: var(--primary-yellow);
+    }
+
+    .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info-wrapper {
+      display: flex;
+      flex-direction: column;
+      padding-top: 8px;
+    }
+
+    .project-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .project-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: #F3F4F6;
+      color: #4B5563;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .meta-table {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .meta-label {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .meta-value {
+      color: var(--text-body);
+    }
+
+    .back-action {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: var(--btn-dark);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 999px;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-back:hover {
+      background-color: var(--btn-dark-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark-bg);
+      color: #D1D5DB;
+      padding: 72px 0 64px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 1.2fr;
+      gap: 48px;
+    }
+
+    .footer-logo-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFFFFF;
+      padding: 10px 18px;
+      border-radius: 6px;
+      margin-bottom: 22px;
+    }
+
+    .footer-logo-box img,
+    .footer-logo-box svg {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-desc {
+      font-size: 12.5px;
+      line-height: 1.75;
+      color: #9CA3AF;
+      max-width: 340px;
+      margin-bottom: 24px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-links a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #262626;
+      color: #D1D5DB;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary-yellow);
+      color: var(--text-dark);
+    }
+
+    .footer-heading {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .footer-nav ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-nav ul li a {
+      font-size: 13px;
+      color: #9CA3AF;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav ul li a:hover {
+      color: var(--primary-yellow);
+    }
+
+    .footer-contact ul li {
+      margin-bottom: 16px;
+    }
+
+    .footer-contact ul li a {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      color: #9CA3AF;
+      line-height: 1.6;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact ul li a:hover {
+      color: var(--primary-yellow);
+    }
+
+    .footer-contact ul li a i {
+      color: var(--primary-yellow);
+      font-size: 14px;
+      margin-top: 4px;
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .project-title {
+        font-size: 26px;
+      }
+
+      .back-action {
+        justify-content: flex-start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="portofolio.html" class="brand-logo" aria-label="Mahira Printing">
+        <img src="assets/logo-mahira.png" alt="Mahira Printing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <svg style="display:none;" viewBox="0 0 280 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 52C12 28.804 30.804 10 54 10C77.196 10 96 28.804 96 52C96 67.4 87.7 80.8 75.3 88" stroke="#F8D231" stroke-width="6" stroke-linecap="round"/>
+          <path d="M24 58L32 24H58L52 50H42L46 32H39L32 58H24Z" fill="#F8D231"/>
+          <path d="M47 24H68C76 24 80 29 78 37C76 45 70 49 61 49H53L47 78H38L47 24ZM56 41H62C66 41 69 39 70 36C71 33 69 31 65 31H58L56 41Z" fill="#F8D231"/>
+          <text x="108" y="54" fill="#F8D231" font-family="Impact, 'Arial Narrow', sans-serif" font-weight="900" font-size="44" letter-spacing="2">MAHIRA</text>
+          <text x="110" y="75" fill="#F8D231" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="700" font-size="14.5" letter-spacing="9.5">PRINTING</text>
+        </svg>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="produk.html">Produk</a>
+        <a href="jasa.html">Jasa</a>
+        <a href="portofolio.html" class="active">Portfolio</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="review.html">Review</a>
+      </nav>
+
+      <a href="https://wa.me/6288291614900" target="_blank" rel="noopener noreferrer" class="btn-primary" id="navOrderBtn">
+        Pesan Sekarang <span>&rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-section">
+      <div class="container">
+        <div class="detail-grid">
+
+          <div class="gallery-wrapper">
+            <div class="main-image-box">
+              <img id="mainProjectImg" src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=1000&q=85" alt="Foto Utama Proyek">
+            </div>
+
+            <div class="thumbnail-grid" id="projectThumbs">
+              <button type="button" class="thumb-item active">
+                <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=1000&q=85" alt="Thumbnail 1">
+              </button>
+              <button type="button" class="thumb-item">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=1000&q=85" alt="Thumbnail 2">
+              </button>
+              <button type="button" class="thumb-item">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85" alt="Thumbnail 3">
+              </button>
+            </div>
+          </div>
+
+          <div class="info-wrapper">
+            <h1 class="project-title" id="projectTitle">PROSES SABLON &amp; KAOS</h1>
+
+            <span class="project-tag" id="projectTag">Sablon Kaos &bull; Desain Kustom</span>
+
+            <p class="project-desc" id="projectDesc">
+              Tahapan eksekusi sablon manual dan cetak kaos kustom sesuai spesifikasi kebutuhan pelanggan. Proses pengerjaan meliputi penyesuaian desain, pemilihan bahan, hingga penyablonan dan finishing agar hasil cetakan rapi dan tahan lama.
+            </p>
+
+            <div class="meta-table">
+              <div class="meta-row">
+                <span class="meta-label">Kategori</span>
+                <span class="meta-value" id="metaCategory">: Proses Sablon &amp; Kaos</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Layanan</span>
+                <span class="meta-value" id="metaService">: Sablon Kaos Kustom</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Pelanggan</span>
+                <span class="meta-value" id="metaClient">: Pesanan Kustom</span>
+              </div>
+            </div>
+
+            <div class="back-action">
+              <a href="portofolio.html" class="btn-back">
+                <span>&larr;</span> Kembali Ke Portofolio
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="kontak">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-box">
+            <img src="assets/logo-mahira.png" alt="Mahira Printing" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <svg style="display:none;" viewBox="0 0 280 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 52C12 28.804 30.804 10 54 10C77.196 10 96 28.804 96 52C96 67.4 87.7 80.8 75.3 88" stroke="#F8D231" stroke-width="6" stroke-linecap="round"/>
+              <path d="M24 58L32 24H58L52 50H42L46 32H39L32 58H24Z" fill="#F8D231"/>
+              <path d="M47 24H68C76 24 80 29 78 37C76 45 70 49 61 49H53L47 78H38L47 24ZM56 41H62C66 41 69 39 70 36C71 33 69 31 65 31H58L56 41Z" fill="#F8D231"/>
+              <text x="108" y="54" fill="#F8D231" font-family="Impact, 'Arial Narrow', sans-serif" font-weight="900" font-size="44" letter-spacing="2">MAHIRA</text>
+              <text x="110" y="75" fill="#F8D231" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="700" font-size="14.5" letter-spacing="9.5">PRINTING</text>
+            </svg>
+          </div>
+          <p class="footer-desc">
+            Mahira Printing berkomitmen memberikan hasil cetak berkualitas. Kami membantu pelaku usaha, desainer, dan penjual melalui layanan cetak offset, digital, serta pembuatan kemasan sesuai kebutuhan.
+          </p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/mahiraprinting?evlk=MTg0cDFydjhjN3llbg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/6288291614900" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h3 class="footer-heading">NAVIGASI</h3>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="jasa.html">Jasa</a></li>
+            <li><a href="portofolio.html">Portofolio</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="review.html">Review</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h3 class="footer-heading">CONTACT &amp; SUPPORT</h3>
+          <ul>
+            <li>
+              <a href="mailto:mahiraprintingg@gmail.com">
+                <i class="fa-regular fa-envelope"></i>
+                <span>mahiraprintingg@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://maps.app.goo.gl/4R66wS7qV4GQJ7K36" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Ciriung, Kec. Cibinong, Kabupaten Bogor,<br>Jawa Barat 16918</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/6288291614900" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Whatsapp: +62 882-9161-4900</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const WA_NUMBER = '6288291614900';
+
+    const PORTFOLIO_PROJECTS = {
+      sablon: {
+        title: 'PROSES SABLON & KAOS',
+        tag: 'Sablon Kaos • Desain Kustom',
+        desc: 'Tahapan eksekusi sablon dan cetak kaos kustom sesuai spesifikasi kebutuhan pelanggan. Meliputi pengecekan desain, pemilihan bahan kain, proses sablon/cetak, hingga tahap finishing agar warna tajam dan rapi.',
+        category: 'Proses Sablon & Kaos',
+        service: 'Sablon Kaos Kustom',
+        client: 'Pesanan Kustom',
+        images: [
+          'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1000&q=85'
+        ]
+      },
+      desain: {
+        title: 'DESAIN & EDITING',
+        tag: 'Pra-Cetak • Layout & Visual',
+        desc: 'Proses penyesuaian tata letak, tipografi, dan persiapan file pra-cetak untuk memastikan hasil visual presisi serta siap diproduksi sesuai kebutuhan cetak maupun digital.',
+        category: 'Desain & Editing',
+        service: 'Desain Grafis & Persiapan Cetak',
+        client: 'Brand & Pelaku Usaha',
+        images: [
+          'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=85'
+        ]
+      },
+      spanduk: {
+        title: 'CETAK SPANDUK & BANNER',
+        tag: 'Outdoor & Indoor • Media Promosi',
+        desc: 'Proses pencetakan spanduk, banner, dan media promosi ukuran besar beresolusi tinggi dengan finishing rapi untuk kebutuhan promosi usaha, acara, maupun display.',
+        category: 'Cetak Spanduk & Banner',
+        service: 'Advertising & Signage',
+        client: 'Event & Promosi Usaha',
+        images: [
+          'https://images.unsplash.com/photo-1504270997636-07ddfbd48945?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=85'
+        ]
+      },
+      merchandise: {
+        title: 'ATRIBUT & MERCHANDISE',
+        tag: 'Custom Gift • Acara & Instansi',
+        desc: 'Proses pembuatan berbagai atribut dan produk merchandise kustom yang disesuaikan dengan identitas merek atau tema kegiatan untuk acara, komunitas, maupun instansi.',
+        category: 'Atribut & Merchandise',
+        service: 'Custom Souvenir & Merchandise',
+        client: 'Komunitas, Event & Instansi',
+        images: [
+          'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=1000&q=85',
+          'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1000&q=85'
+        ]
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const proyekKey = (params.get('proyek') || 'sablon').toLowerCase().trim();
+    const project = PORTFOLIO_PROJECTS[proyekKey] || PORTFOLIO_PROJECTS.sablon;
+
+    document.title = `Detail Portofolio - ${project.title} | Mahira Printing`;
+    document.getElementById('projectTitle').textContent = project.title;
+    document.getElementById('projectTag').innerHTML = project.tag.replace('•', '&bull;');
+    document.getElementById('projectDesc').textContent = project.desc;
+    document.getElementById('metaCategory').textContent = `: ${project.category}`;
+    document.getElementById('metaService').textContent = `: ${project.service}`;
+    document.getElementById('metaClient').textContent = `: ${project.client}`;
+
+    document.getElementById('navOrderBtn').href =
+      `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`Halo Mahira Printing, saya tertarik dengan proyek ${project.title}.`)}`;
+
+    const mainImg = document.getElementById('mainProjectImg');
+    const thumbsContainer = document.getElementById('projectThumbs');
+
+    mainImg.src = project.images[0];
+    mainImg.alt = project.title;
+
+    thumbsContainer.innerHTML = '';
+    project.images.forEach((src, index) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `thumb-item${index === 0 ? ' active' : ''}`;
+      btn.setAttribute('aria-label', `Foto ${index + 1} ${project.title}`);
+      btn.innerHTML = `<img src="${src}" alt="${project.title} foto ${index + 1}">`;
+      btn.addEventListener('click', () => {
+        mainImg.src = src;
+        thumbsContainer.querySelectorAll('.thumb-item').forEach((el) => el.classList.remove('active'));
+        btn.classList.add('active');
+      });
+      thumbsContainer.appendChild(btn);
+    });
+  </script>
+
+</body>
+</html>
